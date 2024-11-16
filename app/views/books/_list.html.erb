@@ -1,0 +1,36 @@
+<h1>User info</h1>
+
+
+
+  <%=image_tag user.get_profile_image(200, 200) %>
+  <table class="table table-striped">
+    <thead>
+  <tr><th> <p>name</p> </th>
+ <th> <p><%=user.name %></p> </th>
+ </tr>
+ <tr>
+  <th> <p>introduction</p> </th>
+  <th><p><%=user.introduction %></p></th>
+  <th colspan="2"></th>
+  </tr>
+  </thead>
+  </table>
+  <div class= touroku>
+<%= link_to   edit_user_path(user.id), class: "btn btn-info btn-lg col-6 " do %>
+<i class="fa-solid fa-user-gear fa-user-cog text-light"></i>
+<% end %>
+</div>
+<div class=" flex-column flex-md-row">
+ <%= link_to "", root_path , class: 'nav-link text-dark' %>
+</div>
+<h2>New book</h2><br>
+<!-- form_with部分 -->
+<%= form_with model: Book.new do |f| %>
+  <p4>Title</p4><br>
+  <%= f.text_field :title %><br>
+
+  <p4>Opinion</p4><br>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book', class: "btn btn-success" %>
+<% end %>

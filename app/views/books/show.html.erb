@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <table class="table table-striped">
+        <thead>
+          <th>Book detail</th>
+        </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to user_path(@user.id) do%>
+              <%=image_tag @user.get_profile_image(50, 50) %>
+             <p> <%= @user.name %> </p>
+            <% end %>
+
+          </td>
+          <td>
+            <%= link_to @book.title, book_path(@book.id) , class: 'nav-link ' %>
+          </td>
+          <td>
+            <%= @book.body %>
+          </td>
+          <% if @user == current_user %>
+          <td>
+            <%= link_to "Edit", edit_book_path(@book.id) , class: "btn btn-success btn-lg col-6" %>
+          </td>
+          <td>
+            <%= link_to "Destroy",book_path(@book.id) , class: "btn btn-danger btn-lg col-6",method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
