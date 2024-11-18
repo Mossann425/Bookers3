@@ -22,11 +22,14 @@ class BooksController < ApplicationController
     @book=Book.new
     @books=Book.all
     @book.user=@user
+
   end
 
   def show
    @book=Book.find(params[:id])
+
    @user=@book.user
+    @book_comment = BookComment.new
   end
   def destroy
     book = Book.find(params[:id])  # データ（レコード）を1件取得
